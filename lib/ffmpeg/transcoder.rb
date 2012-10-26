@@ -61,7 +61,7 @@ module FFMPEG
             end
           end
           
-          if @@timeout
+          if @@timeout and wait_thr
             stderr.each_with_timeout(wait_thr.pid, @@timeout, "r", &next_line)
           else
             stderr.each("r", &next_line)
